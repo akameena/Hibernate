@@ -11,22 +11,24 @@ public class AddMe {
 	@Id //primary key
 	private int id;
 	//@Column(name = "asjdn")
-	private String name;
+	private Name name;
 	//@Transient //use for to not store this column in tabel
 	private int roll_no;
+	
 	
 	public int getId() {
 		return id;
 	}
+	public void setName(Name name) {
+		this.name = name;
+	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
+	public Name getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 	public int getRoll_no() {
 		return roll_no;
 	}

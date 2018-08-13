@@ -17,10 +17,14 @@ public class App
     public static void main( String[] args )
     {
         //System.out.println( "Hello World!" );
+        Name name  = new Name();
+        name.setFname("harish");
+        name.setLname("kaa");
+        name.setMname("mea");
         
         AddMe obj = new AddMe();
         obj.setId(3);
-        obj.setName("lalit");
+        obj.setName(name);
         obj.setRoll_no(63);
         
         
@@ -31,6 +35,7 @@ public class App
         Session session = sf.openSession();
         Transaction tx = session.beginTransaction();
         session.save(obj);
+        //session.get(AddMe.class, 1); // use for fetch data from database
         tx.commit();
         //System.out.println( "Hello World2" );
     }
