@@ -22,19 +22,32 @@ public class App
         name.setLname("kaa");
         name.setMname("mea");
         
-        AddMe obj = new AddMe();
-        obj.setId(3);
-        obj.setName(name);
-        obj.setRoll_no(63);
+        AddMe addme = new AddMe();
+        addme.setId(3);
+        addme.setName(name);
+        addme.setRoll_no(63);
+        
+        Laptop lp = new Laptop();
+        lp.setId(101);
+        lp.setPname("Dell");
         
         
-        Configuration conf = new Configuration().configure().addAnnotatedClass(AddMe.class);
         
+        Student stu = new Student();
+        stu.setName("ak");
+        stu.setRoll_no(59);
+        stu.getLaptop().add(lp);
+        lp.getStudent().add(stu);
+        
+        
+        //Configuration conf = new Configuration().configure().addAnnotatedClass(AddMe.class);
+        Configuration conf = new Configuration().configure().addAnnotatedClass(Student.class).addAnnotatedClass(Laptop.class);
         ServiceRegistry sr = new ServiceRegistryBuilder().applySettings(conf.getProperties()).buildServiceRegistry();
         SessionFactory sf  = conf.buildSessionFactory(sr);
         Session session = sf.openSession();
         Transaction tx = session.beginTransaction();
-        session.save(obj);
+        session.save(lp);
+        session.save(stu);
         //session.get(AddMe.class, 1); // use for fetch data from database
         tx.commit();
         //System.out.println( "Hello World2" );
