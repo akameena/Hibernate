@@ -15,7 +15,7 @@ public class Student {
 	private String name ;
 	@Id
 	private int roll_no;
-	@ManyToMany(mappedBy="student")
+	@ManyToMany(mappedBy="student")//fetch = Fetchtype.EAGER/use for eager fatching
 	private List<Laptop> laptop = new ArrayList<Laptop>();
 	
 	
